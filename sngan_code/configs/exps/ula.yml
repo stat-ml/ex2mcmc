@@ -1,0 +1,14 @@
+n_steps: &n_steps 600
+every: &every 20
+n_fid: 5000
+batchsize: 250
+n_repeat: 1
+
+method: ula_17
+params:
+  grad_step: 0.0025
+  eps_scale: 0.0707
+  n_steps: *n_steps
+every: *every
+alpha: 1
+temperature: 4

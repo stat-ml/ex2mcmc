@@ -1,0 +1,16 @@
+n_steps: &n_steps 600
+every: &every 20
+n_fid: 5000
+batchsize: 100
+n_repeat: 1
+
+method: vanilla_ex2mcmc_17
+params:
+  N: 4
+  corr_coef: 0.
+  bernoulli_prob_corr: 0.
+  n_steps: *n_steps
+  mala_steps: 1
+every: *every
+alpha: 1
+temperature: 4
