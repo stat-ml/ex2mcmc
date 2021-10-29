@@ -1,0 +1,70 @@
+batch_size : 501 #51 # very strangely the last element of a batch produces wrong gradient !
+trunc_chain_len: 50
+val_chain_len: 1
+n_ref: 5000
+
+device: cpu
+figpath: figs
+respath: dump/mnist
+data_root: ../data
+
+nrows: 20
+ncols: 50
+
+methods:
+  ULA:
+    mcmc_class: ULA
+    params:
+      grad_step: 0.01
+      #noise_scale: 0.045
+    n_steps : 50
+    #every : 200
+    color : "tab:brown"
+
+  # MALA:
+  #   mcmc_class: MALA
+  #   params:
+  #     grad_step: 0.003
+  #     adapt_stepsize: False
+  #   n_steps : 30
+  #   #every : 200
+  #   color : "tab:green"
+
+  # "Ex$^2$MCMC w corr":
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 5
+  #     grad_step: 0.003
+  #     adapt_stepsize: False
+  #     corr_coef: 0.995
+  #     bernoulli_prob_corr: 1.0 #0.5
+  #     mala_steps: 1
+  #   n_steps : 30
+  #   #every : 200
+  #   color : "tab:red"
+
+  # "CISIR 0.95":
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 3
+  #     # grad_step: 0.003
+  #     # adapt_stepsize: False
+  #     corr_coef: 0.95
+  #     bernoulli_prob_corr: 1.0 #0.5
+  #     # mala_steps: 1
+  #   n_steps : 10
+  #   #every : 200
+  #   color : "tab:red"
+
+  "CISIR 0.995":
+    mcmc_class: CISIR
+    params:
+      N: 2
+      # grad_step: 0.003
+      # adapt_stepsize: False
+      corr_coef: 0.99
+      bernoulli_prob_corr: 1.0 #0.5
+      # mala_steps: 1
+    n_steps : 50
+    #every : 200
+    color : "tab:pink"

@@ -1,0 +1,54 @@
+batch_size : &batch_size 20000
+train_size : *batch_size
+sigma : 0.05
+random_seed : null #42
+multistart: true
+n_eval: 5
+
+device: cpu
+figpath: figs/gan_gaussians_2d_multi
+respath: dump
+data_root: data
+
+trunc_chain_len: 2000
+burn_in: &burn_in 100
+n_steps: &n_steps 1
+every: &every 1
+n_chunks : 1
+
+methods:
+  ULA:
+    mcmc_class: ULA
+    params:
+      grad_step: 0.001
+      noise_scale: 0.01
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:brown"
+
+  MALA:
+    mcmc_class: MALA
+    params:
+      grad_step: 0.001
+      noise_scale: 0.01
+      adapt_stepsize: False
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:green"
+
+  Ex$^2$MCMC:
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.001
+      noise_scale: 0.01
+      adapt_stepsize: False
+      corr_coef: 0.99
+      bernoulli_prob_corr: 0.9 #0.5
+      mala_steps: 1
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:red"

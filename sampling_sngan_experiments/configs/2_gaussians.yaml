@@ -1,0 +1,101 @@
+# batch_size : 50 #5000
+# n_steps : 400
+# every : 50
+# n_chunks : 8
+# train_size : 5000
+# sigma : 0.05
+# random_seed : 42
+
+device: cpu
+figpath: figs
+respath: dump
+
+methods:
+  i-SIR:
+    n_steps : 1000
+    mcmc_class: CISIR
+    params:
+      N: 10
+    # every : 100
+    color : "tab:blue"
+
+  # CISIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 10
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #     n_steps : 1000
+  #   # every : 100
+  #   color : "tab:orange"
+
+  # ULA:
+  #   mcmc_class: ULA
+  #   params:
+  #     grad_step: 0.001
+  #     noise_scale: 0.045
+  #     n_steps : 800
+  #   every : 100
+  #   color : "tab:brown"
+
+  MALA:
+    mcmc_class: MALA
+    n_steps : 1000
+    params:
+      grad_step: 0.01
+      adapt_stepsize: True
+    # every : 100
+    color : "tab:green"
+
+  "Ex$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    n_steps : 1000
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    # every : 100
+    color : "tab:red"
+
+  # "Ex$^2$MCMC w/o corr":
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 5
+  #     grad_step: 0.01
+  #     adapt_stepsize: True
+  #     mala_steps: 1
+  #     n_steps : 800
+  #   every : 100
+  #   color : "tab:purple"
+
+  # FlCISIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 5
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #   flow:
+  #     num_flows: 4
+  #     lr: 0.01
+  #     batch_size: 100
+  #     n_steps: 200
+
+  FlEx$^2$MCMC:
+    mcmc_class: Ex2MCMC
+    n_steps : 1000
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    flow:
+      num_flows: 2
+      lr: 0.01
+      batch_size: 100
+      n_steps: 200
+    color: "tab:pink"

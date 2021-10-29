@@ -1,0 +1,16 @@
+Cython
+easydict
+flax
+jax
+mlpaper
+numpy
+pandas
+POT
+pyro-ppl
+seaborn
+sklearn
+statsmodels
+torch >= 1.8.0
+torchvision
+tqdm
+yaml

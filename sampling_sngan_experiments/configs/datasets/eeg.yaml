@@ -1,0 +1,4 @@
+n_steps: 3000
+dataset: eeg
+c1: 0
+c2: 1

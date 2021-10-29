@@ -1,0 +1,76 @@
+batch_size : 30
+device: cpu
+figpath: figs
+respath: dump/bayesian_lr
+data_root: data
+
+methods:
+  i-SIR:
+    mcmc_class: CISIR
+    params:
+      N: 5
+    color: "tab:blue"
+
+  # CISIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 5
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #   color: "tab:orange"
+
+  MALA:
+    mcmc_class: MALA
+    params:
+      grad_step: 0.01
+      adapt_stepsize: True
+    color: "tab:green"
+
+  # "Ex$^2$MCMC (1)":
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 5
+  #     grad_step: 0.01
+  #     adapt_stepsize: True
+  #     mala_steps: 1
+  #   color: "tab:purple"
+
+  "Ex$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    color: "tab:red"
+
+  # FlCISIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 5
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #   flow:
+  #     num_flows: 4
+  #     lr: 0.01
+  #     batch_size: 100
+  #     n_steps: 200
+  #   color: 'tab:olive'
+
+  FlEx$^2$MCMC:
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    flow:
+      num_flows: 4
+      lr: 0.01
+      batch_size: 100
+      n_steps: 200
+    color: 'tab:pink'

@@ -1,0 +1,6 @@
+dist: funnel
+dist_class: Funnel
+scale_proposal: 1.
+params: {}
+n_steps: 1
+dims: [5, 10, 15, 20]

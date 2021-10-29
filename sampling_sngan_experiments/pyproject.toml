@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "iterative_sir"
+version = "1.0.0"
+description = "Sampling through Exploration Exploitation: Ex2MCMC"
+authors = []
+readme = "README.md"
+repository = "https://github.com/premolab/gans_sampling"
+documentation = "TBD"
+
+[tool.black]
+target-version = ["py38"]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.poetry.dependencies]
+python = "~3.8"
+numpy = "^1.19.4"
+matplotlib = "^3.3.3"
+torch = "~1.8"
+torchvision = ">=0.8.2"
+Cython = ">=0"
+tqdm = "^4.5"
+sklearn = ">=0"
+POT = ">=0"
+pyro-ppl = "^1.5"
+easydict = "^1"
+pandas = "^1"
+mlpaper = "^0"
+jax = ">=0"
+jaxlib = ">=0"
+seaborn = ">=0"
+pyyaml = ">=0"
+statsmodels = ">=0"
+flax = ">=0" #0.3.4
+
+[tool.isort]
+src_paths = ["iterative_sir"]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 79
+lines_after_imports = 2

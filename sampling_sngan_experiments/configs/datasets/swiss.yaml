@@ -1,0 +1,4 @@
+n_steps: 30000
+dataset: swiss
+c1: 0
+c2: 1

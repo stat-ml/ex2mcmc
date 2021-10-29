@@ -1,0 +1,11 @@
+generator:
+    model_class: Generator
+    params:
+      ngpu: 1
+    weight_path: models/mnist/netG_epoch_99.pth
+
+discriminator:
+    model_class: Discriminator
+    params:
+      ngpu: 1
+    weight_path: models/mnist/netD_epoch_99.pth

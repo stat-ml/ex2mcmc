@@ -1,0 +1,23 @@
+device: cpu
+batch_size: 20
+scale_proposal: 1.414
+scale_target: 1
+figpath: figs
+respath: dump/one_gaussian
+
+methods:
+  i-SIR:
+    mcmc_class: CISIR
+    n_steps: 15000
+    params:
+      N: 10
+    color: "tab:blue"
+
+  Ex$^2$MCMC:
+    mcmc_class: CISIR
+    n_steps: 15000
+    params:
+      N: 10
+      corr_coef: 0.95 #0.9
+      bernoulli_prob_corr: 1.0 #0.9
+    color: "tab:red"

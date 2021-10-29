@@ -1,0 +1,84 @@
+# batch_size : 30
+device: cpu
+figpath: figs
+#respath: dump/complex_geom
+data_root: data
+
+trunc_chain_len: 1000
+
+# 'tab:blue'
+# 'tab:orange'
+# 'tab:green'
+# 'tab:red'
+# 'tab:purple'
+# 'tab:brown'
+# 'tab:pink'
+# 'tab:gray'
+# 'tab:olive'
+# 'tab:cyan'
+
+methods:
+  MALA:
+    mcmc_class: MALA
+    n_steps: 50000
+    ess_rar: 50
+    params:
+      grad_step: 0.01
+      adapt_stepsize: True
+    color : "tab:green"
+
+  # CISIR:
+  #   mcmc_class: CISIR
+  #   n_steps: 1000
+  #   ess_rar: 1
+  #   params:
+  #     N: 10
+  #     # grad_step: 0.01
+  #     # adapt_stepsize: True
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #     # mala_steps: 50
+  #   color : "tab:orange"
+
+  "Ex$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    n_steps: 1000
+    ess_rar: 1
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 50
+    color : "tab:red"
+
+  # FlCISIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 5
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #   flow:
+  #     num_flows: 4
+  #     lr: 0.01
+  #     batch_size: 100
+  #     n_steps: 200
+
+  "FlEx$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    n_steps: 1000
+    ess_rar: 1
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 50
+    flow:
+      num_flows: 6
+      lr: 0.005
+      batch_size: 200
+      n_steps: 200
+    color: 'tab:pink'

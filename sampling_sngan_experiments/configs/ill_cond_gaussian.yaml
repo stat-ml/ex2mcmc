@@ -1,0 +1,62 @@
+# batch_size : 30
+device: cpu
+figpath: figs
+respath: dump/ill_cond_gauss
+data_root: data
+
+trunc_chain_len: 10000
+dim: 50
+batch_size: 50
+
+# 'tab:blue'
+# 'tab:orange'
+# 'tab:green'
+# 'tab:red'
+# 'tab:purple'
+# 'tab:brown'
+# 'tab:pink'
+# 'tab:gray'
+# 'tab:olive'
+# 'tab:cyan'
+
+methods:
+  MALA:
+    mcmc_class: MALA
+    n_steps: 4000
+    ess_rar: 1
+    params:
+      grad_step: 0.01
+      adapt_stepsize: True
+    color : "tab:green"
+
+  "Ex$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    n_steps: 4000
+    ess_rar: 1
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    color : "tab:red"
+
+  "FlEx$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    n_steps: 4000
+    ess_rar: 1
+    params:
+      N: 10
+      grad_step: 0.01
+      adapt_stepsize: True
+      corr_coef: 0.9
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    flow:
+      num_flows: 4
+      lr: 0.001
+      batch_size: 200
+      n_steps: 300
+      # start_optim: 100
+    color: 'tab:pink'

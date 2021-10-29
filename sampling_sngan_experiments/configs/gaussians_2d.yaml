@@ -1,0 +1,81 @@
+batch_size : 100 #5000
+# n_steps : 400
+# every : 50
+train_size : 1000
+sigma : 0.05
+random_seed : 42
+
+device: cpu
+figpath: figs
+respath: dump
+data_root: data
+
+burn_in: &burn_in 1000
+n_steps: &n_steps 1000
+every: &every 1000
+n_chunks : 1
+
+methods:
+  # FlEx$^2$MCMC:
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 10
+  #     grad_step: 0.01
+  #     adapt_stepsize: True
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #     mala_steps: 1
+  #   burn_in : *burn_in
+  #   n_steps : *n_steps
+  #   every : *every
+  #   flow:
+  #     num_flows: 4
+  #     lr: 0.01
+  #     batch_size: 100
+  #     n_steps: 100
+  #   color: 'tab:pink'
+
+  # i-SIR:
+  #   mcmc_class: CISIR
+  #   params:
+  #     N: 10
+  #   burn_in : *burn_in
+  #   n_steps : *n_steps
+  #   every : *every
+  #   color : "tab:blue"
+
+  # ULA:
+  #   mcmc_class: ULA
+  #   params:
+  #     grad_step: 0.01
+  #     noise_scale: 0.1
+  #   burn_in : *burn_in
+  #   n_steps : *n_steps
+  #   every : *every
+  #   color : "tab:brown"
+
+  MALA:
+    mcmc_class: MALA
+    params:
+      grad_step: 1.5 #0.01 #0.01
+      #noise_scale: 0.1
+      adapt_stepsize: False #True
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:green"
+
+  # Ex$^2$MCMC:
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 10
+  #     grad_step: 0.01
+  #     #noise_scale: 0.01
+  #     adapt_stepsize: True #True
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5 #0.5
+  #     mala_steps: 1
+  #   burn_in : *burn_in
+  #   n_steps : *n_steps
+  #   every : *every
+  #   color : "tab:red"

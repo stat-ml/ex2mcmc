@@ -1,0 +1,75 @@
+batch_size : 30 #5000
+# n_steps : 400
+# every : 50
+train_size : 2000
+sigma : 0.05
+random_seed : null
+n_eval: 1
+multistart: False
+
+device: cpu
+figpath: figs/gan_gaussians_2d
+respath: dump
+data_root: data
+
+trunc_chain_len: 2000
+burn_in: &burn_in 500
+n_steps: &n_steps 2000
+every: &every 2000
+n_chunks : 1
+
+methods:
+  # FlEx$^2$MCMC:
+  #   mcmc_class: Ex2MCMC
+  #   params:
+  #     N: 10
+  #     grad_step: 0.001
+  #     adapt_stepsize: True
+  #     corr_coef: 0.9
+  #     bernoulli_prob_corr: 0.5
+  #     mala_steps: 1
+  #   burn_in : *burn_in
+  #   n_steps : *n_steps
+  #   every : *every
+  #   flow:
+  #     num_flows: 4
+  #     lr: 0.01
+  #     batch_size: 100
+  #     n_steps: 100
+  #   color: 'tab:pink'
+
+  ULA:
+    mcmc_class: ULA
+    params:
+      grad_step: 0.001
+      noise_scale: 0.01
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:brown"
+
+  MALA:
+    mcmc_class: MALA
+    params:
+      grad_step: 0.001 #0.01
+      noise_scale: 0.01
+      adapt_stepsize: True
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:green"
+
+  Ex$^2$MCMC:
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.001
+      noise_scale: 0.01
+      adapt_stepsize: True #False
+      corr_coef: 0.9
+      bernoulli_prob_corr: 1.0 #0.5
+      mala_steps: 1
+    burn_in : *burn_in
+    n_steps : *n_steps
+    every : *every
+    color : "tab:red"

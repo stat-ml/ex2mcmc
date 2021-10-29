@@ -1,0 +1,7 @@
+dist: banana
+dist_class: Banana
+scale_proposal: 1.
+params:
+  Q: 0.2
+n_steps: 1
+dims: [6, 10, 20, 36, 50]

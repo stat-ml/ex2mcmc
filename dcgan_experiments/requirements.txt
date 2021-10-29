@@ -1,0 +1,10 @@
+torch >= 1.8.0
+numpy
+tqdm
+torchvision
+sklearn
+POT
+pyro-ppl
+easydict
+pandas
+mlpaper

@@ -1,0 +1,4 @@
+n_steps: 3000
+dataset: digits
+c1: 5
+c2: 6

@@ -1,0 +1,4 @@
+n_steps: 3000
+dataset: covertype
+c1: 3
+c2: 5

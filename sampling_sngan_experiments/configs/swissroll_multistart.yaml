@@ -1,0 +1,88 @@
+batch_size : &batch_size 20000
+train_size : *batch_size
+sigma : 0.05
+random_seed : null
+multistart: true
+trunc_chain_len: 5000
+n_eval: 5
+
+burn_in: &burn_in 150
+n_steps: &n_steps 1
+every: &every 1
+n_chunks : 1
+
+device: cpu
+figpath: figs/swissroll_multi
+respath: dump
+data_root: data
+
+methods:
+  ULA:
+    mcmc_class: ULA
+    params:
+      grad_step: 0.001
+      noise_scale: 0.002
+      #noise_scale: 0.045
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:brown"
+
+  ULA_1:
+    mcmc_class: ULA
+    params:
+      grad_step: 0.0001
+      noise_scale: 0.0002
+      #noise_scale: 0.045
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:brown"
+
+  MALA:
+    mcmc_class: MALA
+    params:
+      grad_step: 0.0001
+      adapt_stepsize: False
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:green"
+
+  MALA_1:
+    mcmc_class: MALA
+    params:
+      grad_step: 0.001
+      adapt_stepsize: False
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:green"
+
+  "Ex$^2$MCMC":
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.0001
+      adapt_stepsize: False
+      corr_coef: 0.999
+      bernoulli_prob_corr: 0.5
+      mala_steps: 1
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:red"
+
+  "Ex$^2$MCMC_1":
+    mcmc_class: Ex2MCMC
+    params:
+      N: 5
+      grad_step: 0.001
+      adapt_stepsize: False
+      corr_coef: 0.99
+      bernoulli_prob_corr: 0.9
+      mala_steps: 1
+    n_steps : *n_steps
+    every: *every
+    burn_in: *burn_in
+    color : "tab:red"

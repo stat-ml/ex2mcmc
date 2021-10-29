@@ -1,2 +1,5 @@
 # Ex2MCMC
-The code of this work is under refactoring, see branch "refactoring". Stay tuned!
+Current structure of the repo:
+1) Code for DCGAN experiments is located in the folder "dcgan_experiments"  
+2) Code for sampling/SNGAN experiments is located in the folder "sampling_sngan_experiments"
+3) Merged code of two folders will be located in the folder "merge_code"
